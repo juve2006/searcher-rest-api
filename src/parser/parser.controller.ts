@@ -20,8 +20,7 @@ export class ParserController {
   @Post()
   async scrape(@Body() url: AddUrlDto) {
     try {
-      const content = await this.clientTask.emit("parse", url);
-      console.log(content);
+      return this.clientTask.emit("parse", url);
     } catch (error) {
       this.logger.error(error);
       if (error) {
@@ -31,4 +30,10 @@ export class ParserController {
       }
     }
   }
+
+  @Get('/content')
+  async getContent(){
+    return this.clientTask.send('get-content', '');
+  }
+
 }
