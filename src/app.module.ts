@@ -5,6 +5,7 @@ import { ConfigModule } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { typeOrmAsyncConfig } from "./database/config/typeorm.config";
 import { SearchModule } from './search/search.module';
+import { ParserModule } from './parser/parser.module';
 
 @Module({
   imports: [ConfigModule.forRoot({
@@ -12,7 +13,8 @@ import { SearchModule } from './search/search.module';
     isGlobal: true,
   }),
   TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
-  SearchModule],
+  SearchModule,
+  ParserModule],
   controllers: [AppController],
   providers: [AppService],
 })
